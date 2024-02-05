@@ -25,6 +25,6 @@ public class CheckPointMgr : MonoBehaviour
     {
         
         transform.position = lastPoint;
-        PlayerInfos.pi.setHealth(3);
+        PlayerInfos.pi.SetHealth(3);
     }
 }

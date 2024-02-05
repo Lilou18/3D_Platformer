@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class PauseScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    bool isPaused = false;
+    public GameObject menuPause;
+    //[SerializeField] ObjectiveManager objectiveMng;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isPaused)
+            {
+                isPaused = false;
+                menuPause.SetActive(isPaused);
+                Time.timeScale = 1;
+            }
+            else 
+            {
+                PlayerInfos.pi.SetObjectivesText();
+                //ObjectiveManager.objectivesManager.SetObjectivesText();
+                isPaused = true;  
+                menuPause.SetActive(isPaused);
+                Time.timeScale = 0f;
+            }
+        }
     }
 }

@@ -34,7 +34,7 @@ public class PlayerCollision : MonoBehaviour
             audioSource.PlayOneShot(coinPickUp);
             GameObject go = Instantiate(pickupEffect, other.transform.position, Quaternion.identity);
             Destroy(go, 0.5f);
-            PlayerInfos.pi.getCoins();
+            PlayerInfos.pi.GetCoins();
             Destroy(other.gameObject);
         }
 
@@ -93,7 +93,7 @@ public class PlayerCollision : MonoBehaviour
             // The player get hurts
             print("aie !");
             isInvincible = true;
-            PlayerInfos.pi.setHealth(-1);
+            PlayerInfos.pi.SetHealth(-1);
             iTween.PunchPosition(gameObject, Vector3.back , 0.5f);
             StartCoroutine("ResetInvincible");
 

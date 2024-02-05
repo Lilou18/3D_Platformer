@@ -3121,12 +3121,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: 3
   nbCoins: 0
+  friendsRemaining: 3
   hearts:
   - {fileID: 1701310100}
   - {fileID: 1207230582}
   - {fileID: 1213482728}
   coinTxt: {fileID: 537619540}
   scoreTxt: {fileID: 1498378869}
+  objectives: {fileID: 1276824619}
   chkp: {fileID: 1241409918}
 --- !u!4 &961122935
 Transform:
@@ -4723,7 +4725,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "- Il reste 3 amis \xE0 lib\xE9rer\n- Il reste 28 pi\xE8ces \xE0 r\xE9cup\xE9rer"
+  m_text: "- Il reste 3 amis \xE0 lib\xE9rer\n- Il reste 27 pi\xE8ces \xE0 r\xE9cup\xE9rer"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5439,6 +5441,7 @@ GameObject:
   - component: {fileID: 1460922424}
   - component: {fileID: 1460922423}
   - component: {fileID: 1460922422}
+  - component: {fileID: 1460922426}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -5538,6 +5541,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1460922426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460922421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0360471b1a3ae41940b0fb0dfd3ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuPause: {fileID: 748102586}
 --- !u!1 &1461439771
 GameObject:
   m_ObjectHideFlags: 0
@@ -15889,6 +15905,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1474290198}
+  - {fileID: 1460922425}
   - {fileID: 543450652983332699}
   - {fileID: 1924449760}
   - {fileID: 1799620956}
@@ -15898,7 +15915,6 @@ SceneRoots:
   - {fileID: 497967015}
   - {fileID: 1830810684}
   - {fileID: 961122935}
-  - {fileID: 1460922425}
   - {fileID: 1653079669}
   - {fileID: 660666665}
   - {fileID: 791222145}

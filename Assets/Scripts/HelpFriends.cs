@@ -42,6 +42,8 @@ public class HelpFriends : MonoBehaviour
             infoTxt.text = "";
             StartCoroutine("DisabledThanksMessage");
             canOpen = false;
+
+            PlayerInfos.pi.DecrementRemainingFriends();
         }
     }
 

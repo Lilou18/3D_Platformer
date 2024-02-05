@@ -64,13 +64,6 @@ public class PlayerCollision : MonoBehaviour
             
             pc.isDead = true;
             StartCoroutine("RestartScene");
-            //pc.isWalking = false;
-
-            //pc.enabled = false;
-
-            //GameObject go = Instantiate(mobpEffect, gameObject.transform.position, Quaternion.identity);
-            //Destroy(go, 0.6f);
-
 
         }
 
@@ -102,7 +95,6 @@ public class PlayerCollision : MonoBehaviour
             isInvincible = true;
             PlayerInfos.pi.setHealth(-1);
             iTween.PunchPosition(gameObject, Vector3.back , 0.5f);
-            //iTween.PunchScale(gameObject, new Vector3(1.2f, 1.2f, 1.2f), 0.3f);  //Problème ici on devrait faire comme pour resetInstantiate
             StartCoroutine("ResetInvincible");
 
         }
@@ -152,7 +144,7 @@ public class PlayerCollision : MonoBehaviour
 
     IEnumerator ResetInvincible() 
     {
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 6; i++)
         {
             yield return new WaitForSeconds(0.2f);
             rend.enabled = !rend.enabled;  // If the renderer is active then he will desactivate and the same is true on the other side.
@@ -162,24 +154,5 @@ public class PlayerCollision : MonoBehaviour
         isInvincible = false;
     
     }
-
-
-    // On ne peut pas utiliser cette fonction car on a un character controller et non on collider
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    // if the ennemy touch the player then he get's hurt.
-    //    if(collision.gameobject.tag == "hurt")
-    //    {
-    //        print("aie !");
-    //    }
-
-    //    // if the player jump on the ennemy, the ennemy dies
-    //    if(collision.gameobject.tag == "mob")
-    //    {
-    //        print("touché!");
-    //        destroy(collision.gameobject, 0.5f);
-    //    }
-    //}
-
 
 }

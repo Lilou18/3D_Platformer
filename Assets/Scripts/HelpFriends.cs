@@ -40,12 +40,12 @@ public class HelpFriends : MonoBehaviour
             Destroy(cage.GetComponent<BoxCollider>(), 1f);
             Destroy(cage.GetComponent<SphereCollider>(), 1f);
             infoTxt.text = "";
-            StartCoroutine("DisabledThanksBalloon");
-            //canOpen = false;
+            StartCoroutine("DisabledThanksMessage");
+            canOpen = false;
         }
     }
 
-    IEnumerator DisabledThanksBalloon()
+    IEnumerator DisabledThanksMessage()
     {
         yield return new WaitForSeconds(5f);
         cage.transform.GetChild(0).gameObject.GetComponent<Canvas>().enabled = false;

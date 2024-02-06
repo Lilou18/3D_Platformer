@@ -5,16 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
-    public int nbCoins = 0;
     public GameObject pickupEffect;
     public GameObject mobpEffect;
     public GameObject loot;
     public GameObject waterEffect;
     bool canInstantiateParticle = true;
     bool isInvincible = false;
+    public GameObject mainCam;
     public GameObject cam1;
     public GameObject cam2;
-    public GameObject cam3;
     public AudioClip hitSound;
     public AudioClip coinPickUp;
     private AudioSource audioSource;
@@ -40,22 +39,25 @@ public class PlayerCollision : MonoBehaviour
 
         if(other.gameObject.name == "Fin")
         {
-            print("score final = " + PlayerInfos.pi.GetScore());
+            PlayerInfos.pi.GetScore();
+            pc.isDead = true;
+            StartCoroutine("RestartScene");
+
         }
 
         // Camera management
         else if (other.gameObject.tag == "cam1")
         {
             cam1.SetActive(true);
+            mainCam.SetActive(false);
         }
         else if (other.gameObject.tag == "cam2")
         {
             cam2.SetActive(true);
+            mainCam.SetActive(false);
         }
-        else if (other.gameObject.tag == "cam3")
-        {
-            cam3.SetActive(true);
-        }
+        
+        
 
         if(other.gameObject.tag == "water")
         {
@@ -74,15 +76,14 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.tag == "cam1")
         {
             cam1.SetActive(false);
+            mainCam.SetActive(true);
         }
         else if (other.gameObject.tag == "cam2")
         {
             cam2.SetActive(false);
+            mainCam.SetActive(true);
         }
-        else if (other.gameObject.tag == "cam3")
-        {
-            cam3.SetActive(false);
-        }
+       
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -103,6 +104,7 @@ public class PlayerCollision : MonoBehaviour
         if (hit.gameObject.tag == "mob" && canInstantiateParticle)
         {
             // The player jump on the mob
+            hit.gameObject.transform.parent.GetComponent<Collider>().enabled = false;
             iTween.PunchScale(hit.gameObject.transform.parent.gameObject, new Vector3(20f, 20f, 20f), 0.6f);  // Animation of the ennemy being hit
 
             canInstantiateParticle = false;
@@ -124,15 +126,14 @@ public class PlayerCollision : MonoBehaviour
         if (hit.gameObject.tag == "fall")
         {
             // Respawn
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //SceneManager.GetActiveScene().buildIndex Permet de savoir le numéro de la scène car LoadScene à besoin de ce numéro
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
     }
 
     IEnumerator RestartScene()
-    {
-        yield return new WaitForSeconds(0.75f);
-        pc.isDead = false;
+    {        
+        yield return new WaitForSeconds(0.75f);        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

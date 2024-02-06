@@ -18,6 +18,7 @@ public class CheckPointMgr : MonoBehaviour
             print("testing cristal");
             lastPoint = transform.position;
             other.gameObject.GetComponent<CoinAnim>().enabled = true;
+            other.gameObject.GetComponent<BoxCollider>().enabled = false; // Keep the player from reactivating an old check point
         }
     }
 

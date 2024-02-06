@@ -5,8 +5,10 @@ using UnityEngine;
 public class PauseScript : MonoBehaviour
 {
     bool isPaused = false;
+    bool miniMapActivated;
     public GameObject menuPause;
     //[SerializeField] ObjectiveManager objectiveMng;
+    public GameObject miniMap;
 
     private void Update()
     {
@@ -25,6 +27,18 @@ public class PauseScript : MonoBehaviour
                 isPaused = true;  
                 menuPause.SetActive(isPaused);
                 Time.timeScale = 0f;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (miniMap.activeSelf)
+            {
+                miniMap.SetActive(false);
+            }
+            else
+            {
+                miniMap.SetActive(true);
             }
         }
     }

@@ -11,22 +11,19 @@ public class PlayerInfos : MonoBehaviour
     public int playerHealth = 3;
     public int nbCoins = 0;
     public int friendsRemaining = 3;
+    public int nbFriendsSaved = 0;
     public Image[] hearts;
     public TextMeshProUGUI coinTxt;
     public TextMeshProUGUI scoreTxt;
     public TextMeshProUGUI objectives;
     public CheckPointMgr chkp;
-    GameObject[] listCoins;
+    
 
     private void Awake()
     {
         pi = this;
     }
 
-    private void Start()
-    {
-        listCoins = GameObject.FindGameObjectsWithTag("coin");
-    }
 
     // Update the player Health
     public void SetHealth(int health)
@@ -54,6 +51,7 @@ public class PlayerInfos : MonoBehaviour
     public void DecrementRemainingFriends()
     {
         friendsRemaining--;
+        nbFriendsSaved++;
     }
 
     public void SetHealthBar() 
@@ -74,7 +72,7 @@ public class PlayerInfos : MonoBehaviour
 
     public int GetScore()
     {
-        int scoreFinal = (nbCoins * 5) + (playerHealth * 10);
+        int scoreFinal = (nbCoins * 5) + (playerHealth * 10) +(nbFriendsSaved * 3);
         scoreTxt.text = "Score = " + scoreFinal;       
         return scoreFinal;
     }
@@ -82,7 +80,7 @@ public class PlayerInfos : MonoBehaviour
     public void SetObjectivesText()
     {
         objectives.text = "- Il reste " + friendsRemaining + " amis à libérer" + System.Environment.NewLine +
-                          "- Il reste " + (listCoins.Length - nbCoins) + " pièces à récupérer";
+                          "- Il reste " + (GameObject.FindGameObjectsWithTag("coin").Length) + " pièces à récupérer";
                           
     }
 

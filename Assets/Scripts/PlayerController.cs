@@ -31,19 +31,11 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //moveDir = Vector3.zero;
             moveDir = new Vector3(0, moveDir.y, 0);
-
         }
         
 
         moveDir.y -= gravity * Time.deltaTime; // Since we don't have a rigidbody we have to apply to the Y axis the gravity
-        
-
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    moveDir.y += jumpForce * Time.deltaTime;
-        //}
         
         // Check space key
         if (Input.GetButtonDown("Jump") && cc.isGrounded && !isDead)
@@ -52,7 +44,7 @@ public class PlayerController : MonoBehaviour
             moveDir.y = jumpForce;
         }
 
-        // set the landmark of the player when he jumps
+        // Set the landmark of the player when he jumps
         if(!cc.isGrounded)
         {
             repere.SetActive(true);
@@ -63,7 +55,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        // If we move the player as too look in the right direction
+        // Set the player too look in the direction he's walking
         if((moveDir.x != 0 || moveDir.z != 0) && !isDead)
         {
             isWalking = true; // The player is moving
@@ -76,10 +68,7 @@ public class PlayerController : MonoBehaviour
 
         anim.SetBool("IsWalking", isWalking);
 
-
-
         cc.Move(moveDir * Time.deltaTime);
-
 
     }
 }

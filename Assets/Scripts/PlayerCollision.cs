@@ -18,6 +18,7 @@ public class PlayerCollision : MonoBehaviour
     public AudioClip coinPickUp;
     private AudioSource audioSource;
     public SkinnedMeshRenderer rend;
+    [SerializeField] GameObject fireworks;
 
     public PlayerController pc;
 
@@ -35,14 +36,6 @@ public class PlayerCollision : MonoBehaviour
             Destroy(go, 0.5f);
             PlayerInfos.pi.GetCoins();
             Destroy(other.gameObject);
-        }
-
-        if(other.gameObject.name == "Fin")
-        {
-            PlayerInfos.pi.GetScore();
-            pc.isDead = true;
-            StartCoroutine("RestartScene");
-
         }
 
         // Camera management
@@ -66,6 +59,13 @@ public class PlayerCollision : MonoBehaviour
             
             pc.isDead = true;
             StartCoroutine("RestartScene");
+        }
+
+        if (other.gameObject.name == "Fin")
+        {
+            PlayerInfos.pi.GetScore();
+            pc.isDead = true;
+            StartCoroutine("NewGame");
 
         }
 
@@ -129,6 +129,13 @@ public class PlayerCollision : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+    }
+
+    IEnumerator NewGame()
+    {
+        fireworks.SetActive(true);
+        yield return new WaitForSeconds(7);
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     IEnumerator RestartScene()

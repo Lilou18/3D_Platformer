@@ -73,15 +73,14 @@ public class PlayerInfos : MonoBehaviour
     public int GetScore()
     {
         int scoreFinal = (nbCoins * 5) + (playerHealth * 10) +(nbFriendsSaved * 3);
-        scoreTxt.text = "Score = " + scoreFinal;       
+        scoreTxt.text = "Bravo! " + System.Environment.NewLine + "Score = " + scoreFinal;       
         return scoreFinal;
     }
 
     public void SetObjectivesText()
     {
         objectives.text = "- Il reste " + friendsRemaining + " amis à libérer" + System.Environment.NewLine +
-                          "- Il reste " + (GameObject.FindGameObjectsWithTag("coin").Length) + " pièces à récupérer";
-                          
+                          "- Il reste " + (GameObject.FindGameObjectsWithTag("coin").Length) + " pièces à récupérer";                          
     }
 
 

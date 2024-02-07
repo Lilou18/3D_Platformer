@@ -31,7 +31,7 @@ public class PauseScript : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.M))
-        {
+        {            
             if (miniMap.activeSelf)
             {
                 miniMap.SetActive(false);

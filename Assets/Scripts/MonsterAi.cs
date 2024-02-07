@@ -5,13 +5,12 @@ using UnityEngine.AI;
 
 public class MonsterAi : MonoBehaviour
 {
-    [Range(0.5f,50)]
-    public float detecDistance = 3; // Distance where the monster will detect the player
+    [Range(0.5f,50)] public float detecDistance = 3; // Distance where the monster will detect the player
     public Transform[] points;
     NavMeshAgent agent;
     int destinationIndex = 0;
     Transform player;
-    float runSpped = 2;
+    [SerializeField] float speed;
 
     private void Start()
     {
@@ -45,7 +44,7 @@ public class MonsterAi : MonoBehaviour
         {
             // The player is detected by the ennemy
             agent.destination = player.position;
-            agent.speed = runSpped;
+            agent.speed = speed;
         }
         else
         {

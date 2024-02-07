@@ -5,22 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
-    public GameObject pickupEffect;
-    public GameObject mobpEffect;
+    [SerializeField] GameObject pickupEffect;
+    [SerializeField] GameObject mobpEffect;
+    [SerializeField] GameObject waterEffect;
     public GameObject loot;
-    public GameObject waterEffect;
     bool canInstantiateParticle = true;
     bool isInvincible = false;
-    public GameObject mainCam;
-    public GameObject cam1;
-    public GameObject cam2;
+    [SerializeField] GameObject cam1;
+    [SerializeField] GameObject cam2;
     public AudioClip hitSound;
     public AudioClip coinPickUp;
     private AudioSource audioSource;
-    public SkinnedMeshRenderer rend;
+    [SerializeField] SkinnedMeshRenderer rend;
     [SerializeField] GameObject fireworks;
 
-    public PlayerController pc;
+    public PlayerController playerController;
 
     private void Start()
     {
@@ -42,12 +41,10 @@ public class PlayerCollision : MonoBehaviour
         else if (other.gameObject.tag == "cam1")
         {
             cam1.SetActive(true);
-            mainCam.SetActive(false);
         }
         else if (other.gameObject.tag == "cam2")
         {
             cam2.SetActive(true);
-            mainCam.SetActive(false);
         }
         
         
@@ -57,14 +54,14 @@ public class PlayerCollision : MonoBehaviour
             GameObject water = Instantiate(waterEffect, gameObject.transform.position, Quaternion.identity);
             Destroy(water, 0.75f);
             
-            pc.isDead = true;
+            playerController.isDead = true;
             StartCoroutine("RestartScene");
         }
 
         if (other.gameObject.name == "Fin")
         {
             PlayerInfos.pi.GetScore();
-            pc.isDead = true;
+            playerController.isDead = true;
             StartCoroutine("NewGame");
 
         }
@@ -76,12 +73,10 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.tag == "cam1")
         {
             cam1.SetActive(false);
-            mainCam.SetActive(true);
         }
         else if (other.gameObject.tag == "cam2")
         {
             cam2.SetActive(false);
-            mainCam.SetActive(true);
         }
        
     }

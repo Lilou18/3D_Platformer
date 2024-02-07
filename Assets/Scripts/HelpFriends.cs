@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class HelpFriends : MonoBehaviour
 {
     GameObject cage;
-    Canvas lastCanvas;
-    public TextMeshProUGUI infoTxt;
+    Canvas cageCanvas;
+    [SerializeField] TextMeshProUGUI infoTxt;
     bool canOpen = false;
     
     private void OnTriggerEnter(Collider other)
@@ -36,8 +36,8 @@ public class HelpFriends : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && canOpen)
         {
             iTween.ShakeScale(cage, new Vector3(100,100,100), 1f);
-            lastCanvas = cage.transform.GetChild(0).gameObject.GetComponent<Canvas>();
-            lastCanvas.enabled = true;
+            cageCanvas = cage.transform.GetChild(0).gameObject.GetComponent<Canvas>();
+            cageCanvas.enabled = true;
             Destroy(cage.GetComponent<MeshRenderer>(), 1.2f);
             Destroy(cage.GetComponent<BoxCollider>(), 1f);
             Destroy(cage.GetComponent<SphereCollider>(), 1f);
@@ -52,7 +52,7 @@ public class HelpFriends : MonoBehaviour
     IEnumerator DisabledThanksMessage()
     {
         yield return new WaitForSeconds(5f);
-        lastCanvas.enabled = false;
+        cageCanvas.enabled = false;
         
     }
 }

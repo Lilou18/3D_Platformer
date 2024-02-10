@@ -1140,7 +1140,7 @@ GameObject:
   - component: {fileID: 2097050677}
   - component: {fileID: 2097050676}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1162,8 +1162,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 89}
-  m_SizeDelta: {x: 294.99536, y: 48.81079}
+  m_AnchoredPosition: {x: -0.0000085831, y: 112.8}
+  m_SizeDelta: {x: 317.0306, y: 48.8108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097050676
 MonoBehaviour:
@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Titre du jeu
+  m_text: 3D Platformer
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -112,6 +112,7 @@ public class PlayerCollision : MonoBehaviour
             Instantiate(loot, hit.gameObject.transform.position + Vector3.forward, Quaternion.identity * Quaternion.Euler(90,0,0)); // Generate a coin to reward the player
 
             audioSource.PlayOneShot(hitSound);
+            StartCoroutine("ResetInstantiate");
             Destroy(hit.gameObject.transform.parent.gameObject, 0.5f); // Destroy the enemy
                         
         }
@@ -140,7 +141,13 @@ public class PlayerCollision : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
- 
+    // Allow only one particle effect to be instantiated when a player kills an enemy
+    IEnumerator ResetInstantiate()
+    {
+        yield return new WaitForSeconds(0.8f);
+        canInstantiateParticle = true;
+    }
+
     // When the player is hit by an enemy, they become invincible for a few seconds
     IEnumerator ResetInvincible() 
     {

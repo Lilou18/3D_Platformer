@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CoinAnim : MonoBehaviour
 {
-    public Vector3 dir;
+    public Vector3 rotationDir; //
 
-    // Update is called once per frame
+    // Apply a rotation to the GameObject
     void Update()
     {
-        transform.Rotate(dir * Time.deltaTime);
+        transform.Rotate(rotationDir * Time.deltaTime);
     }
 }

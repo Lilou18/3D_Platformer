@@ -5,31 +5,30 @@ using UnityEngine;
 public class PauseScript : MonoBehaviour
 {
     bool isPaused = false;
-    bool miniMapActivated;
     public GameObject menuPause;
-    //[SerializeField] ObjectiveManager objectiveMng;
     public GameObject miniMap;
 
     private void Update()
     {
+        // Pause and unpause the game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
             {
                 isPaused = false;
-                menuPause.SetActive(isPaused);
+                menuPause.SetActive(isPaused); // Hide the pause panel
                 Time.timeScale = 1;
             }
             else 
             {
                 PlayerInfos.pi.SetObjectivesText();
-                //ObjectiveManager.objectivesManager.SetObjectivesText();
                 isPaused = true;  
-                menuPause.SetActive(isPaused);
+                menuPause.SetActive(isPaused); //  Display the pause panel with the list of objectives
                 Time.timeScale = 0f;
             }
         }
 
+        // Display or hide the Minimap
         if (Input.GetKeyDown(KeyCode.M))
         {            
             if (miniMap.activeSelf)

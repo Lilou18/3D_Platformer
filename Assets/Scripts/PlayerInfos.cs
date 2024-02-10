@@ -35,19 +35,21 @@ public class PlayerInfos : MonoBehaviour
         else if(playerHealth <= 0) 
         {
             playerHealth = 0;
-            chkp.Respawn();
+            chkp.Respawn(); // Respawn the player at the last checkpoint if they are killed by an enemy
         }
 
-        SetHealthBar();
+        SetHealthBar(); // Display the life of the player
     }
 
-    public void GetCoins() 
+    // Update the number of coins collected
+    public void IncrementCoins() 
     {
         nbCoins++;
         coinTxt.text = nbCoins.ToString();
     
     }
 
+    // Update the information about the friends to be saved
     public void DecrementRemainingFriends()
     {
         friendsRemaining--;
@@ -56,13 +58,13 @@ public class PlayerInfos : MonoBehaviour
 
     public void SetHealthBar() 
     {
-        // We get rid of all the hearts
+        // We are removing all the displayed hearts
         foreach(Image image in hearts)
         {
             image.enabled = false;
         }
 
-        // We display the right number of hearts
+        // We are displaying the correct number of hearts
         for(int i = 0; i < playerHealth; i++)
         {
             hearts[i].enabled = true;
@@ -72,11 +74,13 @@ public class PlayerInfos : MonoBehaviour
 
     public int GetScore()
     {
+        // Score calculation
         int scoreFinal = (nbCoins * 5) + (playerHealth * 10) +(nbFriendsSaved * 3);
         scoreTxt.text = "Bravo! " + System.Environment.NewLine + "Score = " + scoreFinal;       
         return scoreFinal;
     }
 
+    // Update the objectives for the pause panel
     public void SetObjectivesText()
     {
         objectives.text = "- Il reste " + friendsRemaining + " amis à libérer" + System.Environment.NewLine +

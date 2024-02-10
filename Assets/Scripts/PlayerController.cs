@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private CharacterController cc;
-    public float moveSpeed;
-    public float jumpForce;
-    public float gravity;
-    private Vector3 moveDir; // Player direction
+    private CharacterController cc; // Note : Edit > Project Settings > Physics and then check the box “Auto Sync Transforms”
+    [SerializeField] float moveSpeed;
+    [SerializeField] float jumpForce;
+    [SerializeField] float gravity;
+    Vector3 moveDir; // Player direction
     private Animator anim;
-    public bool isWalking = false;
-    public GameObject repere;
+    bool isWalking = false;
+    [SerializeField] GameObject landmark;
     public bool isDead = false;
 
-    //  Go to Edit > Project Settings > Physics and then check the box “Auto Sync Transforms”
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -31,13 +31,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            // The player can't move if he's dead
             moveDir = new Vector3(0, moveDir.y, 0);
         }
         
 
         moveDir.y -= gravity * Time.deltaTime; // Since we don't have a rigidbody we have to apply to the Y axis the gravity
         
-        // Check space key
+        // Allow the player to jump with space bar
         if (Input.GetButtonDown("Jump") && cc.isGrounded && !isDead)
         {
             
@@ -47,11 +48,11 @@ public class PlayerController : MonoBehaviour
         // Set the landmark of the player when he jumps
         if(!cc.isGrounded)
         {
-            repere.SetActive(true);
+            landmark.SetActive(true);
         }
         else
         {
-            repere.SetActive(false);
+            landmark.SetActive(false);
         }
 
 
@@ -59,15 +60,15 @@ public class PlayerController : MonoBehaviour
         if((moveDir.x != 0 || moveDir.z != 0) && !isDead)
         {
             isWalking = true; // The player is moving
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDir.x, 0, moveDir.z)), 0.15f); //The 0.15 is the time it should take for the rotation to happen
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(moveDir.x, 0, moveDir.z)), 0.15f);
         }
         else
         {
-            isWalking = false; // The player is Idle
+            isWalking = false; // The player is idle
         }
 
+        
         anim.SetBool("IsWalking", isWalking);
-
         cc.Move(moveDir * Time.deltaTime);
 
     }

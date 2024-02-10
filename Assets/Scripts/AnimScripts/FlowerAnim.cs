@@ -10,8 +10,8 @@ public class FlowerAnim : MonoBehaviour
 
     void Start()
     {
-        float randomTime = Random.Range(time - 0.3f, time + 0.3f);
-        //iTween.PunchScale(gameObject, amount, time);
+        // Add an animation to the flowers
+        float randomTime = Random.Range(time - 0.3f, time + 0.3f);        
         iTween.ShakeScale(gameObject, iTween.Hash(
             "amount", amount,
             "time", randomTime,

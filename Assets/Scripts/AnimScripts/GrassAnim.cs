@@ -10,8 +10,8 @@ public class GrassAnim : MonoBehaviour
 
     void Start()
     {
-        float randomTime = Random.Range(time - 0.3f, time + 0.3f);
-        //iTween.PunchScale(gameObject, amount, time);
+        // Add an animation to the grass
+        float randomTime = Random.Range(time - 0.3f, time + 0.3f);        
         iTween.PunchScale(gameObject, iTween.Hash(
             "amount", amount,
             "time", randomTime,

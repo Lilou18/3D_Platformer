@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform target; //This is AudioBehaviour player
-    public Vector3 offset; //décalage de la caméra par rapport au personnage
+    [SerializeField] Transform targetPlayer;
+    Vector3 offset; // Offset between the camera and the player
 
     
     void Start()
     {
-        offset = target.position - transform.position;
+        offset = targetPlayer.position - transform.position;
     }
 
     
     void Update()
     {
-        transform.position = target.position - offset;
+        // The camera follow the player
+        transform.position = targetPlayer.position - offset;
     }
 }

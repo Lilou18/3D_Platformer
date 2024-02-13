@@ -13,6 +13,7 @@ TagManager:
   - fall
   - water
   - cage
+  - fin
   layers:
   - Default
   - TransparentFX

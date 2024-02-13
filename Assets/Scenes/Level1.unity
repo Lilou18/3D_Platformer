@@ -522,7 +522,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -60.7, y: 28}
+  m_AnchoredPosition: {x: -60.69995, y: 28}
   m_SizeDelta: {x: 73.8974, y: 26.9157}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &68503189
@@ -6322,7 +6322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30.8, y: -34.4}
+  m_AnchoredPosition: {x: 30.800049, y: -34.400024}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &277251950
@@ -14510,7 +14510,7 @@ GameObject:
   - component: {fileID: 1020232529}
   m_Layer: 0
   m_Name: Fin
-  m_TagString: Untagged
+  m_TagString: fin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20441,6 +20441,7 @@ MonoBehaviour:
   gravity: 20
   landmark: {fileID: 699505802}
   isDead: 0
+  camActive: 0
 --- !u!143 &1241409911
 CharacterController:
   m_ObjectHideFlags: 0
@@ -20510,7 +20511,6 @@ MonoBehaviour:
   coinPickUp: {fileID: 8300000, guid: f180bc43ebdfed748a0e4cdaaaa91f06, type: 3}
   rend: {fileID: 1937553467}
   fireworks: {fileID: 1219539573}
-  playerController: {fileID: 1241409910}
 --- !u!4 &1241409916 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e72fe213447478241be466eab8afc501, type: 3}
@@ -27871,7 +27871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30.8, y: -34.4}
+  m_AnchoredPosition: {x: 30.800049, y: -34.400024}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1701310100

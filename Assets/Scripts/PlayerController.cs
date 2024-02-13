@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     bool isWalking = false;
     [SerializeField] GameObject landmark;
     public bool isDead = false;
-
     public int camActive = 0;
 
     private void Start()

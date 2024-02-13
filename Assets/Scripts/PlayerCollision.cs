@@ -19,11 +19,7 @@ public class PlayerCollision : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] SkinnedMeshRenderer rend;
     [SerializeField] GameObject fireworks;
-
     PlayerController playerController;
-
-    Collider towerColliderExit;
-    Collider towerColliderEnter;
 
     private void Start()
     {

@@ -17,7 +17,7 @@ public class HelpFriends : MonoBehaviour
         if(other.gameObject.tag == "cage")
         {
             cage = other.gameObject; // Since there are many cages, we make sure to refer to the right one
-            infoTxt.text = "Appuyez sur E pour ouvrir la cage...";
+            infoTxt.text = "Appuyer sur E pour ouvrir la cage";
             canOpen = true;
         }
     }

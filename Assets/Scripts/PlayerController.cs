@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject landmark;
     public bool isDead = false;
 
+    public int camActive = 0;
 
     private void Start()
     {
@@ -26,8 +27,18 @@ public class PlayerController : MonoBehaviour
 
         if(!isDead)
         {
-            // Direction calculation
-            moveDir = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDir.y, Input.GetAxis("Vertical") * moveSpeed);
+            // Change the calculation of the direction based on the camera's orientation
+            switch (camActive)
+            {
+                case 0: moveDir = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDir.y, Input.GetAxis("Vertical") * moveSpeed);                    
+                    break;
+                case 1: moveDir = new Vector3(-Input.GetAxis("Vertical") * moveSpeed, moveDir.y, Input.GetAxis("Horizontal") * moveSpeed);
+                    break;
+                case 2: moveDir = new Vector3(-Input.GetAxis("Horizontal") * moveSpeed, moveDir.y, -Input.GetAxis("Vertical") * moveSpeed); ;
+                    break;
+                default: moveDir = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDir.y, Input.GetAxis("Vertical") * moveSpeed); 
+                    break;
+            }            
         }
         else
         {

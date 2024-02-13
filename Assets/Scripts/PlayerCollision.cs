@@ -19,11 +19,15 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer rend;
     [SerializeField] GameObject fireworks;
 
-    public PlayerController playerController;
+    PlayerController playerController;
+
+    Collider towerColliderExit;
+    Collider towerColliderEnter;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        playerController = GetComponent<PlayerController>();
      
     }
     private void OnTriggerEnter(Collider other)
@@ -40,18 +44,6 @@ public class PlayerCollision : MonoBehaviour
             Destroy(other.gameObject);       // Destroy the coin
         }
 
-        // Camera management
-        // When the player is near the tower, we change camera to show all the different sides
-        else if (other.gameObject.tag == "cam1")
-        {
-            cam1.SetActive(true);
-        }
-        else if (other.gameObject.tag == "cam2")
-        {
-            cam2.SetActive(true);
-        }
-        
-        
         // The player dies when he falls into the water
         if(other.gameObject.tag == "water")
         {
@@ -71,21 +63,49 @@ public class PlayerCollision : MonoBehaviour
 
         }
 
+        // Camera management
+        towerColliderEnter = other;
+        Invoke("OnTriggerEnterTower", 0.2f); // Introduce a delay to accommodate the player's movement direction change
+
+    }
+
+    public void OnTriggerEnterTower()
+    {
+        
+        // When the player is near the tower, we change camera to show all the different sides
+        if (towerColliderEnter.gameObject.tag == "cam1")
+        {
+            cam1.SetActive(true);
+            playerController.camActive = 1;
+        }
+        else if (towerColliderEnter.gameObject.tag == "cam2")
+        {
+            cam2.SetActive(true);
+            playerController.camActive = 2;
+        }
     }
 
     // Switch back to the main camera when the player exits the tower zone or is facing the main camera
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "cam1")
+        towerColliderExit = other;
+        Invoke("OnTriggerExitTower", 0.2f); // Introduce a delay to accommodate the player's movement direction change
+    }
+
+    public void OnTriggerExitTower()
+    {
+        if (towerColliderExit.gameObject.tag == "cam1")
         {
             cam1.SetActive(false);
+            playerController.camActive = 0;
         }
-        else if (other.gameObject.tag == "cam2")
+        else if (towerColliderExit.gameObject.tag == "cam2")
         {
             cam2.SetActive(false);
+            playerController.camActive = 0;
         }
-       
     }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
 
